@@ -18,7 +18,7 @@ $supervisor = [
 // Stav se bere z adresy (aboutme.php?status=approved), jinak 'pending'.
 // Možné hodnoty: 'approved', 'pending', 'rejected'.
 $status = $_GET['status'] ?? 'pending';
-$statusLabel = $status;
+$statusLabel = 'neznámý stav';
 $statusClass = 'bg-gray-100 text-gray-600';
 
 // --- ÚKOL 5: může odevzdat práci? ---

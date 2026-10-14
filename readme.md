@@ -145,8 +145,8 @@ textech. Tvar `zbývá 1 den` i `uplynul o 1 den` se řídí stejnými pravidly.
 ### ÚKOL 4 · Stav tématu (`aboutme.php`)
 
 Na Profilu je štítek se stavem navrženého tématu. Stav v `$status` je
-anglický kód (`approved`, `pending`, `rejected`) a štítek ho zatím vypisuje
-tak, jak je. Pod značku `ÚKOL 4` dopište **dva výrazy `match`**: jeden
+anglický kód (`approved`, `pending`, `rejected`) a štítek zatím ukazuje
+vždy `neznámý stav` v šedé barvě. Pod značku `ÚKOL 4` dopište **dva výrazy `match`**: jeden
 uloží do `$statusLabel` český popisek, druhý do `$statusClass` barvu
 štítku.
 
@@ -159,6 +159,13 @@ uloží do `$statusLabel` český popisek, druhý do `$statusClass` barvu
 
 Nezapomeňte na větev `default` — bez ní by `aboutme.php?status=abc`
 skončilo chybou `UnhandledMatchError`.
+
+> **Pozor:** hodnotu z adresy (`$status`) **nikdy nevypisujte přímo** přes
+> `echo`. Do adresy může kdokoli napsat vlastní HTML nebo JavaScript
+> (`?status=<script>…</script>`) a stránka by ho poslala dál do prohlížeče
+> — tomu se říká útok XSS. Na stránku proto jdou jen pevné texty z větví
+> `match`, i pro neznámý stav. Jak bezpečně vypsat libovolný text od
+> uživatele, se naučíte u formulářů.
 
 **Očekávaný výstup (zdrojový kód, `Ctrl+U`):** na `aboutme.php` je štítek
 `čeká na schválení` se třídou `bg-amber-100 text-amber-700`, na
